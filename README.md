@@ -27,3 +27,6 @@ After clicking on the screen, you can enter a 6-digit RGB code to change the col
 When you change the color with RBG, the screen flashes red and blue for 0.3 seconds to make it clear that you have changed the color.  
   
 Be careful with that flash if you are in a dark room and the screen is at maximum brightness.  
+
+## Demo
+[here](https://sayutim.github.io/Red-Wallpaper/)
