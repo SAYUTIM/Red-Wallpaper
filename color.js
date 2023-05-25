@@ -1,5 +1,6 @@
 let isFullscreen = false;
-let currentColor = "red";
+let current = "white";
+let previous = "";
 let input = "";
 
 const enterFullscreen = () => {
@@ -23,16 +24,24 @@ const changeBackgroundColor = (color) => {
 };
 
 const toggleColor = () => {
-  if (currentColor === "red") {
-    currentColor = "white";
+  if (!previous){
+    if (current === "red") {
+      current = "white";
+    } else {
+      current = "red";
+    }
   } else {
-    currentColor = "red";
+    if (current === "white") {
+      current = previous;
+    } else {
+      current = "white";
+    }
   }
 
-  changeBackgroundColor(currentColor);
+  changeBackgroundColor(current);
 };
 
-const addBlueAndRedLight = (color) => {
+const flash = (color) => {
   changeBackgroundColor("blue");
   setTimeout(() => {
     toggleColor();
@@ -60,8 +69,9 @@ document.addEventListener("keydown", (event) => {
     input += keyPressed;
     if (input.length === 6) {
       const newColor = "#" + input;
-      addBlueAndRedLight(newColor);
-      currentColor = newColor;
+      previous = newColor;
+      flash(newColor);
+      current = newColor;
       input = "";
     }
   }
